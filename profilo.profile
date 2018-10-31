@@ -13,7 +13,7 @@ use Symfony\Component\Console\Output\ConsoleOutput;
  * Implements hook_form_FORM_ID_alter() for install_configure_form.
  * @see \Drupal\Core\Installer\Form\SiteConfigureForm
  */
-function groundwork_form_install_configure_form_alter(&$form, FormStateInterface $form_state) {
+function profilo_form_install_configure_form_alter(&$form, FormStateInterface $form_state) {
 
   $environments = [];
   // CLI interactive install. Lets prompt the user.
@@ -52,7 +52,7 @@ function groundwork_form_install_configure_form_alter(&$form, FormStateInterface
   \Drupal::messenger()->deleteByType('status');
 
   // Attach the relevant submit handler for this profile.
-  $form['#submit'][] = 'groundwork_form_install_configure_submit';
+  $form['#submit'][] = 'profilo_form_install_configure_submit';
 
   $form['environment_settings'] = [
     '#type' => 'fieldgroup',
@@ -91,13 +91,13 @@ function groundwork_form_install_configure_form_alter(&$form, FormStateInterface
 }
 
 /**
- * Submission handler for @see groundwork_form_install_configure_form_alter().
+ * Submission handler for @see profilo_form_install_configure_form_alter().
  *
  * Note: A split's stage_file_proxy url is updated in the batch process
- * @see _groundwork_install_tasks_config_split() during site install using
+ * @see _profilo_install_tasks_config_split() during site install using
  * the remote_prod environment indicator url.
  */
-function groundwork_form_install_configure_submit($form, \Drupal\Core\Form\FormStateInterface $form_state) {
+function profilo_form_install_configure_submit($form, \Drupal\Core\Form\FormStateInterface $form_state) {
   $environment_storage = \Drupal::entityTypeManager()->getStorage('environment_indicator');
   foreach ($environment_storage->loadMultiple() as $environment_indicator) {
     /** @var \Drupal\environment_indicator\Entity\EnvironmentIndicator $environment_indicator */
