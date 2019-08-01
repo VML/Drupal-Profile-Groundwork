@@ -1,2 +1,3 @@
 # Drupal Profile: Profilo
-An un-opinionated Drupal profile to take care of repeated tasks for new websites.
+
+THIS HAS BEEN DEPRECTATED IN FAVOR OF https://github.com/VML/Drupal-Profile-Biplane.
